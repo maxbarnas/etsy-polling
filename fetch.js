@@ -3,7 +3,7 @@ const fs = require( 'fs' );
 const JSDOM = require( "jsdom" ).JSDOM;
 const { subtle } = require( 'crypto' ).webcrypto;
 const { StringDecoder } = require( 'string_decoder' );
-const { exec, spawn } = require( 'child_process' );
+const { exec } = require( 'child_process' );
 
 
 const url = 'https://www.etsy.com/pl/shop/PENBBSOfficialStore?ref=simple-shop-header-name&listing_id=641926036&sort_order=date_desc';
@@ -31,7 +31,7 @@ async function calculateHash( data, algorithm = 'SHA-512' ) {
 
 const sendNotification = ( message ) => {
     message = message ? `"${ message }"` : '';
-    
+
     exec( `./notify ${ message }`, { 'shell': 'powershell.exe' }, ( error, _, stderr ) => {
         if ( error || stderr ) {
             throw `There has been a problem with notification: ${ error || stderr }`;
