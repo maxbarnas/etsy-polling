@@ -1,8 +1,8 @@
 {
-  "name": "fetchEtsy",
+  "name": "etsy-polling",
   "version": "1.0.0",
-  "description": "",
-  "main": "fetch.js",
+  "description": "Fetch Etsy for changes in a specified shop",
+  "main": "start.bat",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
