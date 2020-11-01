@@ -1,6 +1,6 @@
-param ( $Message="There's new stuff on Etsy!", [int] $Expiration=120 )
+param ( $Message="There's new stuff on Etsy!")
 $ErrorActionPreference = "Stop"
-$notificationTitle = $Message + "`r`n" + $ExtraInfo
+$notificationTitle = $Message
 
 [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] > $null
 $template = [Windows.UI.Notifications.ToastNotificationManager]::GetTemplateContent([Windows.UI.Notifications.ToastTemplateType]::ToastText01)
@@ -16,8 +16,6 @@ $xml.LoadXml($toastXml.OuterXml)
 $toast = [Windows.UI.Notifications.ToastNotification]::new($xml)
 $toast.Tag = "PowerShell"
 $toast.Group = "PowerShell"
-# $toast.ExpirationTime = [DateTimeOffset]::Now.AddSeconds($Expiration)
-#$toast.SuppressPopup = $true
 
 $notifier = [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier("PowerShell")
 $notifier.Show($toast);
